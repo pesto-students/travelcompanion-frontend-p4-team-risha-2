@@ -50,6 +50,10 @@ body, html {
   top: 127px;
 }
 
+.bg-img{
+  background-image: url(./assests/images/banner.png);
+}
+
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
   .banner {
     left: 50%;
