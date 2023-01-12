@@ -8,8 +8,9 @@ export const LandingPage = () => {
         <div className='banner'>
             <img className="logo" alt="logo" src={logo} />
             <h1>TRAVEL COMPANION</h1>
+            <button className='btn login-btns'><a href="https://accounts.google.com/o/oauth2/v2/auth" target="_blank" rel="noopener noreferrer">
+            Login with google</a></button>
             <button className='btn login-btns' onClick={() => navigate('preferences')}>Login with google</button>
-            <button className='btn login-btns'>Login with facebook</button>
             <button className='btn login-btns'>Login with Apple</button>
             <span>By Signing up, you agree to the travel buddies terms & condition and privacy policy </span>
         </div>)

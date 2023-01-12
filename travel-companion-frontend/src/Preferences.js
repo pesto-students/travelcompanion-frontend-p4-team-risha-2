@@ -1,4 +1,7 @@
-import React from 'react'
+import React from 'react';
+import axios from 'axios';
+import {useNavigate} from 'react-router-dom'
+
 
 class Preferences extends React.Component {
   constructor(props) {
@@ -11,11 +14,21 @@ class Preferences extends React.Component {
         Iam: "",
         location: "",
         gender: "",
-        intrest: new Map(),
+        // intrest: new Map(),
       },
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount(){
+    axios.get('http://localhost:5000/preferences/')
+    .then(Response => {
+      console.log(Response)
+    })
+    .catch(Err => {
+      console.log(Err)
+    })
   }
 
   handleChange(event) {
@@ -23,7 +36,7 @@ class Preferences extends React.Component {
       fields: {
         ...this.state.fields,
         [event.target.name]: event.target.value,
-        [event.target.intrest]:event.target.value
+        // [event.target.intrest]:event.target.value
       }
 
     });
@@ -33,7 +46,14 @@ class Preferences extends React.Component {
   handleSubmit(event) {
     const { fields } = this.state;
     event.preventDefault();
-    console.log("print", fields)
+    console.log("print", fields);
+    axios.post('http://localhost:5000/preferences/', this.state.fields)
+    .then(Response => {
+      console.log(Response)
+    })
+    .catch(Err => {
+      console.log(Err)
+    })
   }
 
   render() {
@@ -114,8 +134,10 @@ class Preferences extends React.Component {
               </label>
             </div>
           </div>
-          <div className="form-group mb-3" name="intrest" value={fields.intrest}
-            onChange={this.handleChange}>
+          <div className="form-group mb-3" 
+          // name="intrest" value={fields.intrest}
+          //   onChange={this.handleChange}
+            >
             <div className="form-check form-check-inline">
               <input className="form-check-input" type="checkbox" name="intrest" id="adventure" value="adventure" />
               <label className="form-check-label" htmlFor="adventure">adventure</label>
