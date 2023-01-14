@@ -1,26 +1,33 @@
 import React, { useState } from 'react'
-import logo from './assests/images/logo.png';
+// import logo from './assests/images/logo.png';
 import { useNavigate } from 'react-router-dom'
 import Axios from "axios";
 
-export const LandingPage = () => {
-    const [loginUsername, setLoginUsername] = useState("");
-    const [loginPassword, setLoginPassword] = useState("");
+export const SignIn = () => {
+    const [registerUsername, setRegisterUsername] = useState("");
+    const [registerPassword, setRegisterPassword] = useState("");
+    const [data, setData] = useState(null);
     const navigate = useNavigate();
 
-    const login = () => {
+    const register = () => {
         Axios({
             method: "POST",
             data: {
-                username: loginUsername,
-                password: loginPassword,
+                username: registerUsername,
+                password: registerPassword,
             },
             withCredentials: true,
-            url: "http://localhost:5000/login",
+            url: "http://localhost:5000/register",
+        }).then((res) => console.log(res));
+    };
+    const getUser = () => {
+        Axios({
+            method: "GET",
+            withCredentials: true,
+            url: "http://localhost:5000/user",
         }).then((res) => {
-            if (res.status == 200){
-                navigate('preferences', { state: loginUsername })
-            }
+            setData(res.data);
+            console.log(res.data);
         });
     };
 
@@ -31,9 +38,9 @@ export const LandingPage = () => {
                     <div className="d-table-cell align-middle">
 
                         <div className="text-center mt-4">
-                            <h1 className="h2">Welcome</h1>
+                            <h1 className="h2">Welcome </h1>
                             <p className="lead">
-                                Login in to your account to continue
+                                Sign in to your account to continue
                             </p>
                         </div>
                         <div className="card">
@@ -47,13 +54,13 @@ export const LandingPage = () => {
                                         <div className="form-group">
                                             <label>Email</label>
                                             <input className="form-control form-control-lg" type="email" name="email" placeholder="Enter your email"
-                                                onChange={(e) => setLoginUsername(e.target.value)}
+                                                onChange={(e) => setRegisterUsername(e.target.value)}
                                             />
                                         </div>
                                         <div className="form-group">
                                             <label>Password</label>
                                             <input className="form-control form-control-lg" type="password" name="password" placeholder="Enter your password"
-                                                onChange={(e) => setLoginPassword(e.target.value)}
+                                                onChange={(e) => setRegisterPassword(e.target.value)}
                                             />
                                             {/* <small>
                                                 <a href="pages-reset-password.html">Forgot password?</a>
@@ -67,11 +74,11 @@ export const LandingPage = () => {
                                         </div> */}
                                         <div className="text-center mt-3">
                                             {/* <a href="index.html" className="btn btn-lg btn-primary" ></a> */}
-                                            <button type="submit" className="btn btn-lg btn-primary" onClick={login}>log in</button>
+                                            <button type="submit" className="btn btn-lg btn-primary" onClick={register}>Sign in</button>
                                         </div>
                                         <div className="text-center mt-3">
                                             {/* <a href="index.html" className="btn btn-lg btn-primary" ></a> */}
-                                            <button type="submit" className="btn btn-lg btn-primary" onClick={() => navigate('signIn')}>Sign in</button>
+                                            <button type="submit" className="btn btn-lg btn-primary" onClick={() => navigate('/')}>Login in</button>
                                         </div>
                                     </form>
                                 </div>
@@ -82,17 +89,8 @@ export const LandingPage = () => {
                 </div>
             </div>
         </div>
-        // <div classNameName='banner'>
-        //     <img classNameName="logo" alt="logo" src={logo} />
-        //     <h1>TRAVEL COMPANION</h1>
-        //     <button classNameName='btn login-btns'><a href="http://localhost:5000/login" target="_blank" rel="noopener noreferrer">
-        //     Login with google</a></button>
-        //     <button classNameName='btn login-btns' onClick={() => navigate('preferences')}>Login with Facebook</button>
-        //     <button classNameName='btn login-btns'>Login with Apple</button>
-        //     <span>By Signing up, you agree to the travel buddies terms & condition and privacy policy </span>
-        // </div>
     )
 
 }
 
-export default LandingPage
+export default SignIn

@@ -60,3 +60,48 @@ body, html {
     margin-left: -512px;   /* 50% */
   }
 }
+
+/* home page css */
+
+body{margin-top:20px;}
+
+body {
+    color: #6c7293;
+}
+
+.profile-navbar .nav-item .nav-link {
+  color: #6c7293;
+}
+
+.profile-navbar .nav-item .nav-link.active {
+  color: #464dee;
+}
+
+.profile-navbar .nav-item .nav-link i {
+  font-size: 1.25rem;
+}
+
+.profile-feed-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #e9e9e9;
+}
+.img-sm {
+    width: 43px;
+    height: 43px;
+}
+
+/* notifications */
+.dropdown-list-image {
+  position: relative;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+.dropdown-list-image img {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+.btn-light {
+  color: #2cdd9b;
+  background-color: #e5f7f0;
+  border-color: #d8f7eb;
+}
