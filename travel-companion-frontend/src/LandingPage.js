@@ -1,14 +1,32 @@
 import React, { useState } from 'react'
-import logo from './assests/images/logo.png';
+// import logo from './assests/images/logo.png';
 import { useNavigate } from 'react-router-dom'
 import Axios from "axios";
+import { useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const LandingPage = () => {
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const navigate = useNavigate();
+    const loggedIn = () => toast.success('Logged In Successfully', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    });
 
-    const login = () => {
+
+    const dispatch = useDispatch()
+
+    const login = (e) => {
+        e.preventDefault();
         Axios({
             method: "POST",
             data: {
@@ -18,7 +36,15 @@ export const LandingPage = () => {
             withCredentials: true,
             url: "http://localhost:5000/login",
         }).then((res) => {
-            if (res.status == 200){
+            if (res.status === 200) {
+                dispatch({
+                    type: 'LOGIN',
+                    payload: {
+                        id: new Date().getTime(),
+                        email: loginUsername
+                    }
+                })
+                loggedIn()
                 navigate('preferences', { state: loginUsername })
             }
         });
@@ -73,6 +99,7 @@ export const LandingPage = () => {
                                             {/* <a href="index.html" className="btn btn-lg btn-primary" ></a> */}
                                             <button type="submit" className="btn btn-lg btn-primary" onClick={() => navigate('signIn')}>Sign in</button>
                                         </div>
+                                        <ToastContainer/>
                                     </form>
                                 </div>
                             </div>

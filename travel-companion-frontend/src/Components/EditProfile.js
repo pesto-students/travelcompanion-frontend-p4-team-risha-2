@@ -1,8 +1,75 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function EditProfile() {
     const navigate = useNavigate();
+    const notify = () => toast.success('Saved User Details', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    });
+    const [state, setState] = useState({
+        name: null,
+        email: "",
+        phone: "",
+        Iam: "",
+        location: "",
+        gender: "",
+        id: ""
+    })
+    const userDetails = useSelector(state => state.loggedInUser);
+    const id_val = userDetails[0]?.id
+    React.useEffect(() => {
+        if (!id_val) {
+            navigate('/')
+        } else {
+            axios.get(`http://localhost:5000/preferences/${id_val}`,)
+                .then(response => {
+                    setState({
+                        name: response.data.name,
+                        email: response.data.email,
+                        phone: response.data.phone
+                    });
+                })
+                .catch(Err => {
+                    console.log(Err)
+                })
+        }
+
+    }, []); 
+
+    function handleChange(evt) {
+        const value = evt.target.value;
+        setState({
+            ...state,
+            [evt.target.name]: value
+        });
+    };
+
+    function saveChanges(event) {
+        event.preventDefault();
+        if (state.name && state.email) {
+            axios.post('http://localhost:5000/preferences/', state)
+                .then(response => {
+                    console.log(response)
+                    notify()
+                })
+                .catch(Err => {
+                    console.log(Err)
+                })
+        }
+    }
+
 
     return (
         <div className="container-xl px-4 mt-4">
@@ -60,60 +127,64 @@ function EditProfile() {
                 <div className="col-xl-8">
                     {/* <!-- Account details card--> */}
                     <div className="card mb-4">
-                        <div className="card-header">Account Details</div>
+                        <div className="card-header">User Details {state.name}</div>
                         <div className="card-body">
                             <form>
                                 {/* <!-- Form Group (username)--> */}
                                 <div className="mb-3">
-                                    <label className="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-                                    <input className="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username" />
+                                    <label className="small mb-1" htmlFor="inputUsername">Username (how your name will appear to other users on the site)</label>
+                                    <input className="form-control" id="inputUsername" type="text" placeholder="Enter your username" name={state.name || ''} defaultValue={state.name || ''} onChange={handleChange} />
                                 </div>
-                                {/* <!-- Form Row--> */}
+                                {/* <div className="row gx-3 mb-3">
+                                    <div className="col-md-6">
+                                        <label className="small mb-1" htmlFor="inputFirstName">First name</label>
+                                        <input className="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie" onChange={handleChange} />
+                                    </div>
+                                    <div className="col-md-6">
+                                        <label className="small mb-1" htmlFor="inputLastName">Last name</label>
+                                        <input className="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna" onChange={handleChange} />
+                                    </div>
+                                </div>
                                 <div className="row gx-3 mb-3">
-                                    {/* <!-- Form Group (first name)--> */}
                                     <div className="col-md-6">
-                                        <label className="small mb-1" for="inputFirstName">First name</label>
-                                        <input className="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie" />
+                                        <label className="small mb-1" htmlFor="inputOrgName">Organization name</label>
+                                        <input className="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Start Bootstrap" onChange={handleChange} />
                                     </div>
-                                    {/* <!-- Form Group (last name)--> */}
                                     <div className="col-md-6">
-                                        <label className="small mb-1" for="inputLastName">Last name</label>
-                                        <input className="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna" />
+                                        <label className="small mb-1" htmlFor="inputLocation">Location</label>
+                                        <input className="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA" onChange={handleChange} />
                                     </div>
-                                </div>
-                                {/* <!-- Form Row        --> */}
-                                <div className="row gx-3 mb-3">
-                                    {/* <!-- Form Group (organization name)--> */}
-                                    <div className="col-md-6">
-                                        <label className="small mb-1" for="inputOrgName">Organization name</label>
-                                        <input className="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Start Bootstrap" />
-                                    </div>
-                                    {/* <!-- Form Group (location)--> */}
-                                    <div className="col-md-6">
-                                        <label className="small mb-1" for="inputLocation">Location</label>
-                                        <input className="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA" />
-                                    </div>
-                                </div>
+                                </div> */}
                                 {/* <!-- Form Group (email address)--> */}
                                 <div className="mb-3">
-                                    <label className="small mb-1" for="inputEmailAddress">Email address</label>
-                                    <input className="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com" />
+                                    <label className="small mb-1" htmlFor="inputEmailAddress">Email address</label>
+                                    <input className="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" name={state.email} defaultValue={state.email || ''} onChange={handleChange} />
                                 </div>
                                 {/* <!-- Form Row--> */}
                                 <div className="row gx-3 mb-3">
                                     {/* <!-- Form Group (phone number)--> */}
                                     <div className="col-md-6">
-                                        <label className="small mb-1" for="inputPhone">Phone number</label>
-                                        <input className="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567" />
+                                        <label className="small mb-1" htmlFor="inputPhone">Phone number</label>
+                                        <input className="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" name={state.phone} defaultValue={state.phone || ''} onChange={handleChange} />
                                     </div>
                                     {/* <!-- Form Group (birthday)--> */}
                                     <div className="col-md-6">
-                                        <label className="small mb-1" for="inputBirthday">Birthday</label>
-                                        <input className="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988" />
+                                        <label className="small mb-1" htmlFor="inputBirthday">Birthday</label>
+                                        <input className="form-control" id="inputBirthday" type="text" placeholder="Enter your birthday" name={state.location} defaultValue={state.location || ''} onChange={handleChange} />
                                     </div>
                                 </div>
                                 {/* <!-- Save changes button--> */}
-                                <button className="btn btn-primary" type="button">Save changes</button>
+                                <button className="btn btn-primary" type="button" onClick={saveChanges}>Save changes</button>
+                                <ToastContainer position="top-right"
+                                    autoClose={5000}
+                                    hideProgressBar={false}
+                                    newestOnTop={false}
+                                    closeOnClick
+                                    rtl={false}
+                                    pauseOnFocusLoss
+                                    draggable
+                                    pauseOnHover
+                                    theme="colored" />
                             </form>
                         </div>
                     </div>
