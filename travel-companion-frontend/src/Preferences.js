@@ -4,11 +4,11 @@ import store from './store/reducer'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { FaLocationArrow,FaSearchLocation } from "react-icons/fa";
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  geocodeByPlaceId,
-  getLatLng,
-} from 'react-places-autocomplete';
+// import PlacesAutocomplete, {
+//   geocodeByAddress,
+//   geocodeByPlaceId,
+//   getLatLng,
+// } from 'react-places-autocomplete';
 
 
 export const Preferences = () => {
@@ -147,12 +147,12 @@ export const Preferences = () => {
               <option value="hyd">hyd</option>
               <option value="/...">...</option>
             </select>
-            <PlacesAutocomplete
+            {/* <PlacesAutocomplete
                 onChange={handleChange}
                 onSelect={handleSelect}
                 name="location"
-              >
-                {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+              > */}
+                {/* {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                   <div
                     key={suggestions.description}
                   >
@@ -188,7 +188,7 @@ export const Preferences = () => {
                     </div>
                   </div>
                 )}
-              </PlacesAutocomplete>
+              </PlacesAutocomplete> */}
           </div>
           <div className="form-group mb-3 col-md-4"
             // value={prefernceData?.fields?.gender}
