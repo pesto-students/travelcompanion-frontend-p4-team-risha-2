@@ -3,6 +3,12 @@ import axios from 'axios';
 import store from './store/reducer'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
+import { FaLocationArrow,FaSearchLocation } from "react-icons/fa";
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  geocodeByPlaceId,
+  getLatLng,
+} from 'react-places-autocomplete';
 
 
 export const Preferences = () => {
@@ -21,6 +27,11 @@ export const Preferences = () => {
       }
     }
   )
+  // const [address, setAdress] = useState("")
+  const { coordinates, setCoordinates } = useState({
+    lat: null,
+    lng: null
+  })
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -32,6 +43,13 @@ export const Preferences = () => {
         [name]: value
       }
     }));
+  }
+
+  const handleSelect = async value1 => {
+    // const results = await geocodeByAddress(value1);
+    // const ll = await getLatLng(results[0]);
+    // // setLocation(value1);
+    // setCoordinates(ll);
   }
 
   const handleSubmit = (event) => {
@@ -129,6 +147,48 @@ export const Preferences = () => {
               <option value="hyd">hyd</option>
               <option value="/...">...</option>
             </select>
+            <PlacesAutocomplete
+                onChange={handleChange}
+                onSelect={handleSelect}
+                name="location"
+              >
+                {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                  <div
+                    key={suggestions.description}
+                  >
+                    <h4>Find buddies based on location Search</h4><br />
+                    <input class="input-inset" type="text"
+                      {...getInputProps({
+                        placeholder: 'Search Places ...',
+                        className: 'location-search-input',
+                      })}
+                    />
+
+                    <div className="autocomplete-dropdown-container">
+                      {loading && <div>Loading...</div>}
+                      {suggestions.map(suggestion => {
+                        const className = suggestion.active
+                          ? 'suggestion-item--active'
+                          : 'suggestion-item';
+                        // inline style for demonstration purpose
+                        // const style = suggestion.active
+                        //   ? { backgroundColor: '#fafafa', cursor: '' }
+                        //   : { backgroundColor: '#ffffff', cursor: '' };
+                        return (
+                          <div
+                            {...getSuggestionItemProps(suggestion, {
+                              className,
+                              // style,
+                            })}
+                          >
+                            <span class="icon"><FaSearchLocation/> {suggestion.description} </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </PlacesAutocomplete>
           </div>
           <div className="form-group mb-3 col-md-4"
             // value={prefernceData?.fields?.gender}

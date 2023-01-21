@@ -28,7 +28,7 @@ function HomePage() {
                                                 Feed
                                             </a>
                                         </li>
-                                        <li className="nav-item">
+                                        <li className="nav-item" onClick={() => navigate('/SearchLocations')}>
                                             <a className="nav-link" href="#">
                                                 <i className="mdi mdi-newspaper"></i>
                                                 Travel
