@@ -1,0 +1,62 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+/* banner css */
+.banner{
+  background-image: url(./assests/images/banner.png);
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* align center  */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+
+}
+
+.login-btns{
+  border: 1px solid black;
+  background-color: #fff;
+  margin: 10px;
+  width: 175px;
+
+}
+
+.banner span {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 5%;
+}
+
+.logo{
+  width: 130px;
+  position: absolute;
+  top: 127px;
+}
+
+.bg-img{
+  background-image: url(./assests/images/banner.png);
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  .banner {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
