@@ -22,7 +22,7 @@ export const Preferences = () => {
         Iam: "",
         location: "",
         gender: "",
-        id: ""
+        user: ""
         // intrest: new Map(),
       }
     }
@@ -90,7 +90,7 @@ export const Preferences = () => {
       <div className="container bg-img">
         <h4>Welcome to Travel Companion</h4>
         <h2>Help us trailor a better experience for you </h2>
-        <form>
+        <form className='col-lg-7'>
           <div className="form-group mb-3">
             <label htmlFor="yourName">Your Name</label>
             <input type="text" className="form-control" id="yourName" placeholder="Enter your Name"
@@ -203,7 +203,7 @@ export const Preferences = () => {
             </div>
             <div className="form-check">
               <input className="form-check-input" type="radio" name="gender" id="maleId" value="male" required
-              />field
+              />
               <label className="form-check-label" htmlFor="maleID">
                 Male
               </label>
