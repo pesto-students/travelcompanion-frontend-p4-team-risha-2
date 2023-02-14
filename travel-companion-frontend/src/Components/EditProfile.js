@@ -31,7 +31,7 @@ function EditProfile() {
     const id_val = userDetails[0]?.id
     React.useEffect(() => {
         if (!id_val) {
-            navigate('/')
+            // navigate('/')
         } else {
             axios.get(`http://localhost:5000/preferences/${id_val}`,)
                 .then(response => {
@@ -74,45 +74,10 @@ function EditProfile() {
     return (
         <div className="container-xl px-4 mt-4">
             {/* <!-- Account page navigation--> */}
-            <nav className="nav nav-borders">
-                <ul className="nav profile-navbar">
-                    <li className="nav-item">
-                        <a className="nav-link active" href="#">
-                            <i className="mdi mdi-account-outline"></i>
-                            Feed
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">
-                            <i className="mdi mdi-newspaper"></i>
-                            Travel
-                        </a>
-                    </li>
-                    <li className="nav-item" onClick={() => navigate('/influncers')}>
-                        <a className="nav-link" href="#">
-                            <i className="mdi mdi-calendar"></i>
-                            Influncers
-                        </a>
-                    </li>
-                    <li className="nav-item" onClick={() => navigate('/notification')}>
-                        <a className="nav-link" href="#">
-                            <i className="mdi mdi-calendar"></i>
-                            Notifications
-                        </a>
-                    </li>
-                    <li className="nav-item" onClick={() => navigate('/EditProfile')}>
-                        <a className="nav-link" href="#">
-                            <i className="mdi mdi-attachment"></i>
-                            Profile
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <hr className="mt-0 mb-4" />
             <div className="row">
-                <div className="col-xl-4">
+                <div className="col-lg-12">
                     {/* <!-- Profile picture card--> */}
-                    <div className="card mb-4 mb-xl-0">
+                    <div className="card mb-4 mb-2">
                         <div className="card-header">Profile Picture</div>
                         <div className="card-body text-center">
                             {/* <!-- Profile picture image--> */}
@@ -124,7 +89,7 @@ function EditProfile() {
                         </div>
                     </div>
                 </div>
-                <div className="col-xl-8">
+                <div className="col-lg-12">
                     {/* <!-- Account details card--> */}
                     <div className="card mb-4">
                         <div className="card-header">User Details {state.name}</div>

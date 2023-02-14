@@ -8,6 +8,7 @@ import Influncers from './Components/Influncers';
 import Notification from './Components/Notification';
 import SignIn from './Components/SignIn';
 import SearchLocations from './Components/SearchLocations';
+import 'bootstrap/dist/js/bootstrap.js';
 
 function App() {
   return (

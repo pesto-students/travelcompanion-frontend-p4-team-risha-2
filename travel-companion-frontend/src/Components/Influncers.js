@@ -55,13 +55,13 @@ function Influncers() {
                                         <button className="btn btn-primary btn-round">Follow</button>
                                         <button className="btn btn-primary btn-round btn-simple">Message</button>
                                     </div>
-                                    <p className="social-icon m-t-5 m-b-0">
+                                    {/* <p className="social-icon m-t-5 m-b-0">
                                         <a title="Twitter" href="javascript:void(0);"><i className="fa fa-twitter"></i></a>
                                         <a title="Facebook" href="javascript:void(0);"><i className="fa fa-facebook"></i></a>
                                         <a title="Google-plus" href="javascript:void(0);"><i className="fa fa-twitter"></i></a>
                                         <a title="Behance" href="javascript:void(0);"><i className="fa fa-behance"></i></a>
                                         <a title="Instagram" href="javascript:void(0);"><i className="fa fa-instagram "></i></a>
-                                    </p>
+                                    </p> */}
                                 </div>
                             </div>
                         </div>
@@ -84,13 +84,13 @@ function Influncers() {
                                         <button className="btn btn-primary btn-round">Follow</button>
                                         <button className="btn btn-primary btn-round btn-simple">Message</button>
                                     </div>
-                                    <p className="social-icon m-t-5 m-b-0">
+                                    {/* <p className="social-icon m-t-5 m-b-0">
                                         <a title="Twitter" href="javascript:void(0);"><i className="fa fa-twitter"></i></a>
                                         <a title="Facebook" href="javascript:void(0);"><i className="fa fa-facebook"></i></a>
                                         <a title="Google-plus" href="javascript:void(0);"><i className="fa fa-twitter"></i></a>
                                         <a title="Behance" href="javascript:void(0);"><i className="fa fa-behance"></i></a>
                                         <a title="Instagram" href="javascript:void(0);"><i className="fa fa-instagram "></i></a>
-                                    </p>
+                                    </p> */}
                                 </div>
                             </div>
                         </div>
@@ -114,13 +114,13 @@ function Influncers() {
                                         <button className="btn btn-primary btn-round">Follow</button>
                                         <button className="btn btn-primary btn-round btn-simple">Message</button>
                                     </div>
-                                    <p className="social-icon m-t-5 m-b-0">
+                                    {/* <p className="social-icon m-t-5 m-b-0">
                                         <a title="Twitter" href="javascript:void(0);"><i className="fa fa-twitter"></i></a>
                                         <a title="Facebook" href="javascript:void(0);"><i className="fa fa-facebook"></i></a>
                                         <a title="Google-plus" href="javascript:void(0);"><i className="fa fa-twitter"></i></a>
                                         <a title="Behance" href="javascript:void(0);"><i className="fa fa-behance"></i></a>
                                         <a title="Instagram" href="javascript:void(0);"><i className="fa fa-instagram "></i></a>
-                                    </p>
+                                    </p> */}
                                 </div>
                             </div>
                         </div>
@@ -143,13 +143,13 @@ function Influncers() {
                                         <button className="btn btn-primary btn-round">Follow</button>
                                         <button className="btn btn-primary btn-round btn-simple">Message</button>
                                     </div>
-                                    <p className="social-icon m-t-5 m-b-0">
+                                    {/* <p className="social-icon m-t-5 m-b-0">
                                         <a title="Twitter" href="javascript:void(0);"><i className="fa fa-twitter"></i></a>
                                         <a title="Facebook" href="javascript:void(0);"><i className="fa fa-facebook"></i></a>
                                         <a title="Google-plus" href="javascript:void(0);"><i className="fa fa-twitter"></i></a>
                                         <a title="Behance" href="javascript:void(0);"><i className="fa fa-behance"></i></a>
                                         <a title="Instagram" href="javascript:void(0);"><i className="fa fa-instagram "></i></a>
-                                    </p>
+                                    </p> */}
                                 </div>
                             </div>
                         </div>
