@@ -34,7 +34,7 @@ export const LandingPage = () => {
                 password: loginPassword,
             },
             withCredentials: true,
-            url: "http://localhost:5000/login",
+            url: "https://travelcompanion-q32wjds34a-as.a.run.app/login",
         }).then((res) => {
             if (res.status === 200) {
                 debugger

@@ -33,7 +33,7 @@ function EditProfile() {
         if (!id_val) {
             // navigate('/')
         } else {
-            axios.get(`http://localhost:5000/preferences/${id_val}`,)
+            axios.get(`https://travelcompanion-q32wjds34a-as.a.run.app/preferences/${id_val}`,)
                 .then(response => {
                     setState({
                         name: response.data.name,
@@ -59,7 +59,7 @@ function EditProfile() {
     function saveChanges(event) {
         event.preventDefault();
         if (state.name && state.email) {
-            axios.post('http://localhost:5000/preferences/', state)
+            axios.post('https://travelcompanion-q32wjds34a-as.a.run.app/preferences/', state)
                 .then(response => {
                     console.log(response)
                     notify()
