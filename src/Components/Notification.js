@@ -11,31 +11,31 @@ function Notification() {
             <nav className="nav nav-borders">
                 <ul className="nav profile-navbar">
                     <li className="nav-item">
-                        <a className="nav-link active" href="#">
+                        <a className="nav-link active" href="src/Components#">
                             <i className="mdi mdi-account-outline"></i>
                             Feed
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">
+                        <a className="nav-link" href="src/Components#">
                             <i className="mdi mdi-newspaper"></i>
                             Travel
                         </a>
                     </li>
                     <li className="nav-item" onClick={() => navigate('/influncers')}>
-                        <a className="nav-link" href="#">
+                        <a className="nav-link" href="src/Components#">
                             <i className="mdi mdi-calendar"></i>
                             Influncers
                         </a>
                     </li>
                     <li className="nav-item" onClick={() => navigate('/notification')}>
-                        <a className="nav-link" href="#">
+                        <a className="nav-link" href="src/Components#">
                             <i className="mdi mdi-calendar"></i>
                             Notifications
                         </a>
                     </li>
                     <li className="nav-item" onClick={() => navigate('/EditProfile')}>
-                        <a className="nav-link" href="#">
+                        <a className="nav-link" href="src/Components#">
                             <i className="mdi mdi-attachment"></i>
                             Profile
                         </a>

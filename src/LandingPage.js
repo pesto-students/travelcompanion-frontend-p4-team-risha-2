@@ -5,6 +5,7 @@ import Axios from "axios";
 import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 
 
 export const LandingPage = () => {
@@ -34,10 +35,9 @@ export const LandingPage = () => {
                 password: loginPassword,
             },
             withCredentials: true,
-            url: "https://travelcompanion-q32wjds34a-as.a.run.app/login",
+            url: "http://localhost:5000/login",
         }).then((res) => {
             if (res.status === 200) {
-                debugger
                 dispatch({
                     type: 'SET_TOKEN',
                     payload: {

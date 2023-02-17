@@ -28,20 +28,9 @@ export const SignIn = () => {
                 gender: gender,
                 intrest: intrest,
             },
-            withCredentials: true,
             url: "https://travelcompanion-q32wjds34a-as.a.run.app/register",
         }).then((res) => console.log(res));
     };
-    // const getUser = () => {
-    //     Axios({
-    //         method: "GET",
-    //         withCredentials: true,
-    //         url: "http://localhost:5000/user",
-    //     }).then((res) => {
-    //         setData(res.data);
-    //         console.log(res.data);
-    //     });
-    // };
 
     return (
         <div className="container h-100 bg-img-sign-up">
@@ -110,7 +99,7 @@ export const SignIn = () => {
                                         <div className="form-group mb-3 col-md-4">
                                             <label htmlFor="location">I am based out of</label>
                                             <select id="location" className="form-control" name="location"
-                                                // value={prefernceData?.fields?.location} 
+                                                // value={prefernceData?.fields?.location}
                                                 onChange={(e) => setLocation(e.target.value)} required>
                                                 <option value="">Choose...</option>
                                                 <option value="hyd">hyd</option>

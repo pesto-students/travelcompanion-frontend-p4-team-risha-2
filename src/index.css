@@ -15,13 +15,13 @@ code {
 
 /* body{
   margin-top:20px;
-  background:#eee;    
+  background:#eee;
 }
 a {
   color: #f96332;
 } */
 .m-t-5{
-  margin-top: 5px;   
+  margin-top: 5px;
 }
 .card {
   background: #fff;
@@ -167,7 +167,7 @@ label, h1, p{
 
 
 .bg-img-sign-up{
-  background-image: url("./assests/images/sign-In.jpeg");
+  background-image: url("assests/images/sign-In.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
