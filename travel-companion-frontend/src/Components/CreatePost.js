@@ -6,27 +6,25 @@ import { useSelector } from 'react-redux';
 
 function CreatePost() {
     const [postBody, setpostBody] = useState("");
-    const username = useSelector(state => state.token);
+    const token = useSelector(state => state.token);
     const [image, setImage] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Code to handle posting the message and image to the server
-  };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // Code to handle posting the message and image to the server
+    };
     const post = (e) => {
         e.preventDefault();
-        debugger;
         Axios({
             method: "POST",
             data: {
                 body: postBody,
                 images: image,
-                author: username,
                 createdOn: new Date(),
                 likes: [],
             },
-            withCredentials: true,
             url: "http://localhost:5000/feed",
+            headers: { Authorization: `Bearer ${token}` }
         }).then((res) => console.log(res));
     };
 
@@ -61,7 +59,7 @@ function CreatePost() {
                 <textarea placeholder="Add your comment here" onChange={(e) => setpostBody(e.target.value)} required />
                 <button id="submit" type="submit" className="button button-outline comment-button action-button expand-right" onClick={post}>Add Comment</button>
             </form> */}
-            </div>
+        </div>
     )
 }
 
