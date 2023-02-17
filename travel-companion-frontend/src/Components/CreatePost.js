@@ -54,6 +54,7 @@ function CreatePost() {
                 </div>
                 <button className="btn btn-primary" type="submit" onClick={post}>Post</button>
             </form>
+            
             {/* <form className="post-edit" >
                 <input type="text" placeholder="Your Name" required />
                 <textarea placeholder="Add your comment here" onChange={(e) => setpostBody(e.target.value)} required />
