@@ -55,7 +55,7 @@ export const Preferences = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (prefernceData.fields.name && prefernceData.fields.email) {
-      axios.post('http://localhost:5000/preferences/', prefernceData.fields)
+      axios.post('https://travelcompanion-q32wjds34a-as.a.run.app/preferences/', prefernceData.fields)
         .then(response => {
           console.log(response)
           setPreferenceData((prefernceData) => ({

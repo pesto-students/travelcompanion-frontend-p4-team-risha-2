@@ -29,7 +29,7 @@ export const SignIn = () => {
                 intrest: intrest,
             },
             withCredentials: true,
-            url: "http://localhost:5000/register",
+            url: "https://travelcompanion-q32wjds34a-as.a.run.app/register",
         }).then((res) => console.log(res));
     };
     // const getUser = () => {

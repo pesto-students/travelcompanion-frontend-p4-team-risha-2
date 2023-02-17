@@ -42,7 +42,7 @@ function SearchLocations() {
   const search = (event) => {
     event.preventDefault();
     if (address) {
-      axios.post('http://localhost:5000/mapPlaces/', { location: address })
+      axios.post('https://travelcompanion-q32wjds34a-as.a.run.app/mapPlaces/', { location: address })
         .then(response => {
           console.log(response)
           notify()
@@ -50,7 +50,7 @@ function SearchLocations() {
         .catch(Err => {
           console.log(Err)
         })
-        axios.get(`http://localhost:5000/mapPlacesbySearch/${address}`,)
+        axios.get(`https://travelcompanion-q32wjds34a-as.a.run.app/mapPlacesbySearch/${address}`,)
                 .then(response => {
                   console.log(response)
                     // setState({
