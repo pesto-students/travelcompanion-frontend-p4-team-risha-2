@@ -18,29 +18,30 @@ function EditProfile() {
         progress: undefined,
         theme: "colored",
     });
-    const [state, setState] = useState({
+    const [data, setdata] = useState({
         name: null,
         email: "",
         phone: "",
         Iam: "",
-        location: "",
+        password: "",
         gender: "",
         id: ""
     })
-    const userDetails = useSelector(state => state.loggedInUser);
-    const id_val = userDetails[0]?.id
+    const id = useSelector(state => state._id);
     React.useEffect(() => {
-        if (!id_val) {
+        if (!id) {
             // navigate('/')
         } else {
-            axios.get(`https://travelcompanion-q32wjds34a-as.a.run.app/preferences/${id_val}`,)
+            debugger
+            axios.get(`http://localhost:5000/preferences/${id}`,)
                 .then(response => {
-                    setState({
+                    setdata({
                         name: response.data.name,
                         email: response.data.email,
-                        phone: response.data.phone
+                        phone: response.data.phone,
+                        password: response.data.password
                     });
-                })
+                    })
                 .catch(Err => {
                     console.log(Err)
                 })
@@ -50,16 +51,23 @@ function EditProfile() {
 
     function handleChange(evt) {
         const value = evt.target.value;
-        setState({
-            ...state,
+        setdata({
+            ...data,
             [evt.target.name]: value
         });
     };
 
+    const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + useSelector(state => state.token)
+        }
+    };
+
     function saveChanges(event) {
         event.preventDefault();
-        if (state.name && state.email) {
-            axios.post('https://travelcompanion-q32wjds34a-as.a.run.app/preferences/', state)
+        if (data.name && data.email) {
+            axios.post('https://locahost:5000/preferences/', data, config)
                 .then(response => {
                     console.log(response)
                     notify()
@@ -92,13 +100,13 @@ function EditProfile() {
                 <div className="col-lg-12">
                     {/* <!-- Account details card--> */}
                     <div className="card mb-4">
-                        <div className="card-header">User Details {state.name}</div>
+                        <div className="card-header">User Details {data.name}</div>
                         <div className="card-body">
                             <form>
                                 {/* <!-- Form Group (username)--> */}
                                 <div className="mb-3">
                                     <label className="small mb-1" htmlFor="inputUsername">Username (how your name will appear to other users on the site)</label>
-                                    <input className="form-control" id="inputUsername" type="text" placeholder="Enter your username" name={state.name || ''} defaultValue={state.name || ''} onChange={handleChange} />
+                                    <input className="form-control" id="inputUsername" type="text" placeholder="Enter your username" name={data.name || ''} defaultValue={data.name || ''} onChange={handleChange} />
                                 </div>
                                 {/* <div className="row gx-3 mb-3">
                                     <div className="col-md-6">
@@ -123,19 +131,19 @@ function EditProfile() {
                                 {/* <!-- Form Group (email address)--> */}
                                 <div className="mb-3">
                                     <label className="small mb-1" htmlFor="inputEmailAddress">Email address</label>
-                                    <input className="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" name={state.email} defaultValue={state.email || ''} onChange={handleChange} />
+                                    <input className="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" name={data.email} defaultValue={data.email || ''} onChange={handleChange} />
                                 </div>
                                 {/* <!-- Form Row--> */}
                                 <div className="row gx-3 mb-3">
                                     {/* <!-- Form Group (phone number)--> */}
                                     <div className="col-md-6">
                                         <label className="small mb-1" htmlFor="inputPhone">Phone number</label>
-                                        <input className="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" name={state.phone} defaultValue={state.phone || ''} onChange={handleChange} />
+                                        <input className="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" name={data.phone} defaultValue={data.phone || ''} onChange={handleChange} />
                                     </div>
                                     {/* <!-- Form Group (birthday)--> */}
                                     <div className="col-md-6">
-                                        <label className="small mb-1" htmlFor="inputBirthday">Birthday</label>
-                                        <input className="form-control" id="inputBirthday" type="text" placeholder="Enter your birthday" name={state.location} defaultValue={state.location || ''} onChange={handleChange} />
+                                        <label className="small mb-1" htmlFor="inputPassword">Password</label>
+                                        <input className="form-control" id="inputPassword" type="password" placeholder="Change your password" name={data.password} defaultValue={data.password || ''} onChange={handleChange} />
                                     </div>
                                 </div>
                                 {/* <!-- Save changes button--> */}

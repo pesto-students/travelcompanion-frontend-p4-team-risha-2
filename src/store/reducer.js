@@ -15,12 +15,12 @@ const initialState = {
         gender: "",
     }],
         token: null,
+        _id:""
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'LOGIN':
-            debugger
             return {
                 ...state,
                 loggedInUser: [action.payload],
@@ -29,12 +29,13 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 token: action.payload.token,
+                _id:action.payload._id
             };
         case 'REMOVE_TOKEN':
-            debugger
             return {
                 ...state,
                 token: null,
+                id:null
             };
 
         default:

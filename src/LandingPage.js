@@ -42,7 +42,8 @@ export const LandingPage = () => {
                     type: 'SET_TOKEN',
                     payload: {
                         token: res.data.token,
-                        email: loginUsername
+                        email: loginUsername,
+                        _id: res.data.userId
                     }
                 })
                 loggedIn()

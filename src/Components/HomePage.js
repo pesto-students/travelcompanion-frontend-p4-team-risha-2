@@ -9,6 +9,7 @@ import { Tabs, Tab } from 'react-bootstrap';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import Buddies from './Buddies';
 import EditProfile from './EditProfile';
+import Feed from './Feed';
 
 function HomePage() {
   const navigate = useNavigate();
@@ -72,22 +73,7 @@ function HomePage() {
                         </ul>
                       </div>
                     </div>
-                    {/* <nav>
-                    <Tabs defaultActiveKey="home">
-      <Tab eventKey="home" title="Home">
-        Home content
-      </Tab>
-      <Tab eventKey="profile" title="Profile">
-        Profile content
-      </Tab>
-      <Tab eventKey="contact" title="Contact">
-        Contact content
-      </Tab>
-    </Tabs>
-</nav> */}
-
                     <div className="col-lg-8">
-                   
                       <ul className="nav nav-tabs" id="myTab" role="tablist">
                         <li className="nav-item" role="presentation">
                           <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Feed</button>
@@ -111,74 +97,8 @@ function HomePage() {
                                 <CreatePost />
                               </div>
                             </div>
-                            <div className="d-flex align-items-start profile-feed-item">
-                              <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="profile" className="img-sm rounded-circle" />
-                              <div className="ml-4">
-                                <h6>
-                                  Mason Beck
-                                  <small className="ml-4 text-muted"><i className="mdi mdi-clock mr-1"></i>10 hours</small>
-                                </h6>
-                                <p>
-                                  There is no better advertisement campaign that is low cost and also successful at the same time.
-                                </p>
-                                <p className="small text-muted mt-2 mb-0">
-                                  <span>
-                                    <i className="mdi mdi-star mr-1"></i>4
-                                  </span>
-                                  <span className="ml-2">
-                                    <i className="mdi mdi-comment mr-1"></i>11
-                                  </span>
-                                  <span className="ml-2">
-                                    <i className="mdi mdi-reply"></i>
-                                  </span>
-                                </p>
-                              </div>
-                            </div>
-                            <div className="d-flex align-items-start profile-feed-item">
-                              <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="profile" className="img-sm rounded-circle" />
-                              <div className="ml-4">
-                                <h6>
-                                  Willie Stanley
-                                  <small className="ml-4 text-muted"><i className="mdi mdi-clock mr-1"></i>10 hours</small>
-                                </h6>
-                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="sample" className="rounded mw-100" />
-                                <p className="small text-muted mt-2 mb-0">
-                                  <span>
-                                    <i className="mdi mdi-star mr-1"></i>4
-                                  </span>
-                                  <span className="ml-2">
-                                    <i className="mdi mdi-comment mr-1"></i>11
-                                  </span>
-                                  <span className="ml-2">
-                                    <i className="mdi mdi-reply"></i>
-                                  </span>
-                                </p>
-                              </div>
-                            </div>
-                            <div className="d-flex align-items-start profile-feed-item">
-                              <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="profile" className="img-sm rounded-circle" />
-                              <div className="ml-4">
-                                <h6>
-                                  Dylan Silva
-                                  <small className="ml-4 text-muted"><i className="mdi mdi-clock mr-1"></i>10 hours</small>
-                                </h6>
-                                <p>
-                                  When I first got into the online advertising business, I was looking for the magical combination
-                                  that would put my website into the top search engine rankings
-                                </p>
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="sample" className="rounded mw-100" />
-                                <p className="small text-muted mt-2 mb-0">
-                                  <span>
-                                    <i className="mdi mdi-star mr-1"></i>4
-                                  </span>
-                                  <span className="ml-2">
-                                    <i className="mdi mdi-comment mr-1"></i>11
-                                  </span>
-                                  <span className="ml-2">
-                                    <i className="mdi mdi-reply"></i>
-                                  </span>
-                                </p>
-                              </div>
+                            <div><h3 className='my-3'> FEED </h3>
+                              <Feed />
                             </div>
                           </div>
                         </div>
@@ -186,41 +106,6 @@ function HomePage() {
                         <div className="tab-pane fade" id="buddies" role="tabpanel" aria-labelledby="buddies-tab"><Buddies/></div>
                         <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><EditProfile/></div>
                       </div>
-                      {/* <div className="mt-4 py-2 border-top border-bottom">
-                        <ul className="nav profile-navbar">
-                          <li className="nav-item">
-                            <p className="nav-link active" >
-                              <i className="mdi mdi-account-outline"></i>
-                              Feed
-                            </p>
-                          </li>
-                          <li className="nav-item" onClick={() => navigate('/SearchLocations')}>
-                            <p className="nav-link" >
-                              <i className="mdi mdi-newspaper"></i>
-                              Travel
-                            </p>
-                          </li>
-                          <li className="nav-item" onClick={() => navigate('/influncers')}>
-                            <p className="nav-link">
-                              <i className="mdi mdi-calendar"></i>
-                              Influncers
-                            </p>
-                          </li>
-                          <li className="nav-item" onClick={() => navigate('/notification')}>
-                            <p className="nav-link">
-                              <i className="mdi mdi-calendar"></i>
-                              Notifications
-                            </p>
-                          </li>
-                          <li className="nav-item" onClick={() => navigate('/EditProfile')}>
-                            <p className="nav-link" >
-                              <i className="mdi mdi-attachment"></i>
-                              Profile
-                            </p>
-                          </li>
-                        </ul>
-                      </div> */}
-
                     </div>
                   </div>
                   <div className="col-lg-2">

@@ -28,7 +28,7 @@ export const SignIn = () => {
                 gender: gender,
                 intrest: intrest,
             },
-            url: "https://travelcompanion-q32wjds34a-as.a.run.app/register",
+            url: "http://localhost:5000/register",
         }).then((res) => console.log(res));
     };
 
