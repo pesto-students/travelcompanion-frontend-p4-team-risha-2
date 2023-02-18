@@ -23,7 +23,7 @@ function CreatePost() {
                 createdOn: new Date(),
                 likes: [],
             },
-            url: "https://travelcompanion-q32wjds34a-as.a.run.app/feed",
+            url: "https://localhost:5000/feed",
             headers: { Authorization: `Bearer ${token}` }
         }).then((res) => console.log(res));
     };
