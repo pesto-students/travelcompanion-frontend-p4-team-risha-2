@@ -12,9 +12,9 @@ export const LandingPage = () => {
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const navigate = useNavigate();
-    const loggedIn = () => toast.success('Logged In Successfully', {
+    const loggedIn = () => toast.error('Incorrect Email / Password', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -46,10 +46,12 @@ export const LandingPage = () => {
                         _id: res.data.userId
                     }
                 })
-                loggedIn()
                 navigate('homePage', { state: loginUsername })
             }
-        });
+        })
+        .catch((e) => {
+            loggedIn()
+        })
     };
 
     return (
