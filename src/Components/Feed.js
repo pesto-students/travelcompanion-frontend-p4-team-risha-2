@@ -23,7 +23,6 @@ function Feed() {
                 {data.map(item => {
                     const dateStr = item.createdOn;
                     const date = new Date(dateStr);
-            
                     const formattedDate = date.toLocaleString('en-US', {
                       month: 'long',
                       day: 'numeric',
@@ -36,17 +35,17 @@ function Feed() {
                     });
                 
                 return(
-                    <div key={item._id}>
-                        <h4>{item.author.username}</h4>
+                    <div key={item?._id}>
+                        <h4>{item?.author?.username}</h4>
                         <div className="d-flex align-items-start profile-feed-item">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="profile" className="img-sm rounded-circle" />
+                            <img  alt="profile" className="img-sm rounded-circle" />
                             <div className="ml-4">
                                 <h6>
-                                {item.author.username}
+                                {item?.author?.username}
                                     <small className="mx-4 text-muted"><i className="mdi mdi-clock mr-1"></i>{formattedDate}</small>
                                 </h6>
                                 <p>
-                                {item.body}
+                                {item?.body}
                                 </p>
                             </div>
                         </div>
