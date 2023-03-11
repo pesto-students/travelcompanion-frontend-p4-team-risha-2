@@ -67,11 +67,11 @@ function SearchLocations() {
 
   return (
     <div>
-      <div className="container">
+      <div className="">
         {/* <div className="tabs h-auto"> */}
           {/* <div className="tab"> */}
             {/* <input type="radio" name="css-tabs" id="tab-1" defaultChecked={true} className="tab-switch" /> */}
-            <h2>Search Destination</h2>
+            {/* <h2>Search Destination</h2> */}
             <div className="w-100 d-flex h-auto">
               <PlacesAutocomplete
                 onChange={handleChange}
