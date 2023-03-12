@@ -10,8 +10,8 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 
 
-function SearchLocations() {
-  const [address, setAdress] = useState("")
+function SearchLocations(props) {
+  const [address, setAdress] = useState("");
   const { coordinates, setCoordinates } = useState({
     lat: null,
     lng: null
@@ -21,7 +21,7 @@ function SearchLocations() {
     const results = await geocodeByAddress(value1);
     const ll = await getLatLng(results[0]);
     setAdress(value1);
-    setCoordinates(ll);
+    props.onData(results[0].place_id); 
   }
 
   const handleChange = (event) => {
@@ -45,7 +45,7 @@ function SearchLocations() {
       axios.post('https://travelcompanion-q32wjds34a-as.a.run.app/mapPlaces/', { location: address })
         .then(response => {
           console.log(response)
-          notify()
+          notify();
         })
         .catch(Err => {
           console.log(Err)

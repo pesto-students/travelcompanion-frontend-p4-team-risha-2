@@ -4,10 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import {
   Navbar,
-  Nav,
-  NavDropdown,
   Form,
-  FormControl,
   Button,
   Badge,
 } from "react-bootstrap";
@@ -23,7 +20,7 @@ function NavbarWithNotificationAndLogout() {
   };
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar expand="lg">
       <Navbar.Brand href="#home"><h1>Travel Companion</h1></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">

@@ -2,20 +2,20 @@
 // import Nav from 'react-bootstrap/Nav';
 // import Navbar from 'react-bootstrap/Navbar';
 import NavbarWithNotificationAndLogout from './Navbar';
-import { useNavigate } from 'react-router-dom'
-import CreatePost from './CreatePost';
-import SearchLocations from './SearchLocations';
-import { Tabs, Tab } from 'react-bootstrap';
+import CreatePost from './Tabs/CreatePost';
 import 'bootstrap/dist/js/bootstrap.min.js';
-import Buddies from './Buddies';
+import Buddies from './Tabs/Buddies';
 import EditProfile from './EditProfile';
-import Feed from './Feed';
+import Feed from './Tabs/Feed';
+import React, { useState } from 'react';
+import Travel from './Tabs/Travel';
 
 function HomePage() {
-  const navigate = useNavigate();
+  const [refresh, setRefresh] = useState(false);
+
   return (
     <>
-      <div className="container h-100">
+      <div className="container">
         <NavbarWithNotificationAndLogout />
         <div className="row h-100">
           <div className="col-12 col-sm-10 col-md-12 mx-auto d-table h-100">
@@ -30,12 +30,12 @@ function HomePage() {
                           <ul className="timeline"></ul>
                         </div>
                         <div className="logo"></div>
-                        <div className='d-flex'>
+                        <div className='d-flex justify-content-end'>
                           <h1 className="title">
                             Uma Varagam
                             <div>varagam@gmail.com</div>
                           </h1>
-                          <button className='btn btn-primary edit-btn'>Edit Profile</button>
+                          <button className='btn btn-primary edit-btn'>My Feed</button>
                           <div>
                           </div>
                         </div>
@@ -92,17 +92,17 @@ function HomePage() {
                         <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                           <div className="profile-feed">
                             <div className="callout secondary">
-                              <div className='p-3 border border-info rounded'>
+                              <div className='p-3 border rounded mt-2'>
                                 <h4 className="leave-comment">Create a Post: </h4>
-                                <CreatePost />
+                                <CreatePost refresh={refresh} setRefresh={setRefresh}/>
                               </div>
                             </div>
                             <div><h3 className='my-3'> FEED </h3>
-                              <Feed />
+                              <Feed refresh={refresh} setRefresh={setRefresh}/>
                             </div>
                           </div>
                         </div>
-                        <div className="tab-pane fade" id="travel" role="tabpanel" aria-labelledby="travel-tab"><SearchLocations /></div>
+                        <div className="tab-pane fade" id="travel" role="tabpanel" aria-labelledby="travel-tab"><Travel /></div>
                         <div className="tab-pane fade" id="buddies" role="tabpanel" aria-labelledby="buddies-tab"><Buddies/></div>
                         <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><EditProfile/></div>
                       </div>

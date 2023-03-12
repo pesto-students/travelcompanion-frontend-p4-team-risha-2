@@ -5,6 +5,7 @@ import Axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import Loader from './utilities/Loader/Loader';
 import SearchLocations from './SearchLocations';
+import { useSelector } from 'react-redux';
 
 export const SignIn = () => {
     const [registerUsername, setRegisterUsername] = useState("");
@@ -16,8 +17,9 @@ export const SignIn = () => {
     const [gender, setGender] = useState("");
     const [intrest, setIntrest] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const token = useSelector(state => state.token);
 
-    // const [data, setData] = useState(null);
+    // const [data, setLocation] = useState(null);
     const navigate = useNavigate();
 
     /**
@@ -76,7 +78,7 @@ export const SignIn = () => {
                     intrest: intrest,
                 },
                 url: "http://localhost:5000/register",
-
+                headers: { Authorization: `Bearer ${token}` }
             }).then((res) => {
                 setIsLoading(false);
                 errorDisplay("User Created Succesfuuly, Please login");
@@ -88,13 +90,17 @@ export const SignIn = () => {
         }
     };
 
+    function handleData(dataFromChild) {
+        setLocation(dataFromChild);
+    }
+
     return (
         isLoading ?
             <Loader /> :
             <div className="container h-100 bg-img-sign-up">
                 <div className="row h-100">
 
-                    <div className='col-lg-4 m-auto text-light'>
+                    <div className='col-lg-4 m-auto text-light my-5'>
                         <h1>Already have a account?</h1>
                         <h3>Lets jump into the adventure</h3>
                         Explore the world with ease
@@ -156,57 +162,10 @@ export const SignIn = () => {
                                             </div>
                                             <div className="form-group mb-3">
                                                 <label htmlFor="location">I am based out of</label>
-                                                {/* <select id="location" className="form-control" name="location"
-                                                    // value={prefernceData?.fields?.location}
-                                                    onChange={(e) => setLocation(e.target.value)} required>
-                                                    <option value="">Choose...</option>
-                                                    <option value="hyd">hyd</option>
-                                                    <option value="/...">...</option>
-                                                </select> */}
-                                                <SearchLocations />
+                                                
+                                                <SearchLocations  onData={handleData}/>
 
-                                                {/* <PlacesAutocomplete
-                onChange={handleChange}
-                onSelect={handleSelect}
-                name="location"
-              > */}
-                                                {/* {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                  <div
-                    key={suggestions.description}
-                  >
-                    <h4>Find buddies based on location Search</h4><br />
-                    <input class="input-inset" type="text"
-                      {...getInputProps({
-                        placeholder: 'Search Places ...',
-                        className: 'location-search-input',
-                      })}
-                    />
-
-                    <div className="autocomplete-dropdown-container">
-                      {loading && <div>Loading...</div>}
-                      {suggestions.map(suggestion => {
-                        const className = suggestion.active
-                          ? 'suggestion-item--active'
-                          : 'suggestion-item';
-                        // inline style for demonstration purpose
-                        // const style = suggestion.active
-                        //   ? { backgroundColor: '#fafafa', cursor: '' }
-                        //   : { backgroundColor: '#ffffff', cursor: '' };
-                        return (
-                          <div
-                            {...getSuggestionItemProps(suggestion, {
-                              className,
-                              // style,
-                            })}
-                          >
-                            <span class="icon"><FaSearchLocation/> {suggestion.description} </span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-              </PlacesAutocomplete> */}
+                                                
                                             </div>
                                             <div className="form-group mb-3 col-md-4"
                                                 // value={prefernceData?.fields?.gender}
