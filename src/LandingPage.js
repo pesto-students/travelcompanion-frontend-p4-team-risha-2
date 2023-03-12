@@ -6,11 +6,13 @@ import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from './Components/utilities/Loader/Loader';
+import { useSelector } from 'react-redux';
 
 export const LandingPage = () => {
     const [loginEmail, setloginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const token = useSelector(state => state.token);
     const navigate = useNavigate();
     const errorDisplay = (e) => toast.error(e, {
         position: "top-right",
@@ -65,6 +67,7 @@ export const LandingPage = () => {
                 },
                 withCredentials: true,
                 url: "http://localhost:5000/login",
+                headers: { Authorization: `Bearer ${token}` }
             }).then((res) => {
                 if (res.status === 200) {
                     dispatch({

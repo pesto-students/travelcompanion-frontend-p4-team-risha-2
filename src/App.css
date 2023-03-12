@@ -67,6 +67,22 @@ html {
     margin-left: -512px;
     /* 50% */
   }
+
+  .edit-btn{
+    top: 10px !important;
+  }
+
+  .title{
+    font-size: 12px !important;
+  }
+
+  .card{
+    width : auto !important;
+  }
+
+  .location-search-input{
+    width: 200px !important;
+  }
 }
 
 /* home page css */
@@ -224,7 +240,7 @@ input::placeholder {
 
 .title {
   top: 50%;
-  font-size: 140%;
+  font-size: 18px;
   position: absolute;
   bottom: 0px;
   left: 195px;
@@ -290,6 +306,5 @@ input::placeholder {
 .edit-btn {
   top: 54%;
   position: absolute;
-  left: 83%;
   background-color: #0088cc;
 }

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
@@ -7,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function EditProfile() {
-    const navigate = useNavigate();
     const notify = () => toast.success('Saved User Details', {
         position: "top-right",
         autoClose: 5000,
@@ -32,7 +30,6 @@ function EditProfile() {
         if (!id) {
             // navigate('/')
         } else {
-            debugger
             axios.get(`http://localhost:5000/preferences/${id}`,)
                 .then(response => {
                     setdata({
@@ -47,7 +44,7 @@ function EditProfile() {
                 })
         }
 
-    }, []); 
+    }, [id]); 
 
     function handleChange(evt) {
         const value = evt.target.value;
@@ -89,7 +86,7 @@ function EditProfile() {
                         <div className="card-header">Profile Picture</div>
                         <div className="card-body text-center">
                             {/* <!-- Profile picture image--> */}
-                            <img className="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="" />
+                            <img className="img-account-profile rounded-circle mb-2" src="https://firebasestorage.googleapis.com/v0/b/travelcompanion-374605.appspot.com/o/images%2Fdownload.jfif?alt=media&token=39c29a3f-073d-4dfd-b853-a793ea83b803" alt="" />
                             {/* <!-- Profile picture help block--> */}
                             <div className="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                             {/* <!-- Profile picture upload button--> */}
