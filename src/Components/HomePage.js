@@ -7,12 +7,36 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import Buddies from './Tabs/Buddies';
 import EditProfile from './EditProfile';
 import Feed from './Tabs/Feed';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef   } from 'react';
 import Travel from './Tabs/Travel';
+import { ToastContainer, toast } from 'react-toastify';
 
 function HomePage() {
   const [refresh, setRefresh] = useState(false);
+  // const isInitialMount = useRef(true);
 
+  const notify = () => toast.success('LoggedIn successfully', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+});
+
+useEffect(() => {
+  // if (!isInitialMount.current) {
+  //   notify();
+  //   isInitialMount.current = true;
+  // }
+  const timer = setTimeout(() => {
+        notify();
+  }, 1000);
+  return () => clearTimeout(timer);
+
+}, []);
   return (
     <>
       <div className="container">
@@ -169,6 +193,7 @@ function HomePage() {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </div >
     </>
   );

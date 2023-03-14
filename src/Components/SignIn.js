@@ -5,7 +5,6 @@ import Axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import Loader from './utilities/Loader/Loader';
 import SearchLocations from './SearchLocations';
-import { useSelector } from 'react-redux';
 
 export const SignIn = () => {
     const [registerUsername, setRegisterUsername] = useState("");
@@ -17,7 +16,6 @@ export const SignIn = () => {
     const [gender, setGender] = useState("");
     const [intrest, setIntrest] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const token = useSelector(state => state.token);
 
     // const [data, setLocation] = useState(null);
     const navigate = useNavigate();
@@ -78,7 +76,6 @@ export const SignIn = () => {
                     intrest: intrest,
                 },
                 url: "http://localhost:5000/register",
-                headers: { Authorization: `Bearer ${token}` }
             }).then((res) => {
                 setIsLoading(false);
                 errorDisplay("User Created Succesfuuly, Please login");
@@ -100,7 +97,7 @@ export const SignIn = () => {
             <div className="container h-100 bg-img-sign-up">
                 <div className="row h-100">
 
-                    <div className='col-lg-4 m-auto text-light my-5'>
+                    <div className='col-lg-4 m-auto text-light py-5'>
                         <h1>Already have a account?</h1>
                         <h3>Lets jump into the adventure</h3>
                         Explore the world with ease

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
 import { FaLocationArrow,FaSearchLocation } from "react-icons/fa";
 
 import PlacesAutocomplete, {
@@ -28,24 +27,12 @@ function SearchLocations(props) {
     setAdress(event)
   }
 
-  const notify = () => toast.success('Searching..', {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-  });
-
   const search = (event) => {
     event.preventDefault();
     if (address) {
       axios.post('https://travelcompanion-q32wjds34a-as.a.run.app/mapPlaces/', { location: address })
         .then(response => {
           console.log(response)
-          notify();
         })
         .catch(Err => {
           console.log(Err)
@@ -119,7 +106,6 @@ function SearchLocations(props) {
           {/* </div> */}
         {/* </div> */}
       </div>
-      <ToastContainer />
     </div>
   )
 
