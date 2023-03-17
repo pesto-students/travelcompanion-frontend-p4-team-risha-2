@@ -38,13 +38,13 @@ function EditProfile() {
                         phone: response.data.phone,
                         password: response.data.password
                     });
-                    })
+                })
                 .catch(Err => {
                     console.log(Err)
                 })
         }
 
-    }, [id]); 
+    }, [id]);
 
     function handleChange(evt) {
         const value = evt.target.value;
@@ -56,8 +56,8 @@ function EditProfile() {
 
     const config = {
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + useSelector(state => state.token)
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + useSelector(state => state.token)
         }
     };
 
@@ -144,8 +144,8 @@ function EditProfile() {
                                     </div>
                                 </div>
                                 {/* <!-- Save changes button--> */}
-                                <button className="btn btn-primary" type="button" onClick={saveChanges}>Save changes</button>
-                                <ToastContainer position="top-right"
+                                <button className="btn btn-primary" type="button" onClick={saveChanges}>Save changes {notify}12</button>
+                                { notify ? <ToastContainer position="top-right"
                                     autoClose={5000}
                                     hideProgressBar={false}
                                     newestOnTop={false}
@@ -154,7 +154,7 @@ function EditProfile() {
                                     pauseOnFocusLoss
                                     draggable
                                     pauseOnHover
-                                    theme="colored" />
+                                    theme="colored" /> : ''}
                             </form>
                         </div>
                     </div>

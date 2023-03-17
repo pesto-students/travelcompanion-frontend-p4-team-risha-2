@@ -15,7 +15,8 @@ const initialState = {
         gender: "",
     }],
         token: null,
-        _id:""
+        _id:"",
+        name:""
 }
 
 const reducer = (state = initialState, action) => {
@@ -29,13 +30,14 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 token: action.payload.token,
-                _id:action.payload._id
+                _id:action.payload._id,
+                name:action.payload.name
             };
         case 'REMOVE_TOKEN':
             return {
                 ...state,
                 token: null,
-                id:null
+                id:null,
             };
 
         default:

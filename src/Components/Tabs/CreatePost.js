@@ -5,6 +5,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import storage from '../../firebase';
 import { ToastContainer, toast } from 'react-toastify';
 import Loader from '../utilities/Loader/Loader';
+import { useNavigate } from 'react-router-dom';
 
 
 // import "../CSS/Createpost.css"
@@ -15,6 +16,9 @@ function CreatePost({ refresh, setRefresh }) {
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
+    const author = useSelector(state => state);
+
 
     /**
      * 
@@ -69,8 +73,13 @@ function CreatePost({ refresh, setRefresh }) {
                 // setProgress(uploaded);
             },
             (error) => {
-                console.log(error);
-                setIsLoading(false);
+                if (error.response.status === 401) {
+                    // unauthorized, redirect to login page
+                    navigate('/');
+                  } else{
+                    console.log(error);
+                    setIsLoading(false);
+                  }
             },
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then((url) => {
@@ -83,7 +92,7 @@ function CreatePost({ refresh, setRefresh }) {
     const post = (e) => {
         e.preventDefault();
         const errors = validateForm();
-
+        
         if(Object.keys(errors).length === 0){
             setIsLoading(true);
             Axios({
@@ -93,6 +102,7 @@ function CreatePost({ refresh, setRefresh }) {
                     images: url,
                     createdOn: new Date(),
                     likes: [],
+                    name: "assam"
                 },
                 url: "http://localhost:5000/feed",
                 headers: { Authorization: `Bearer ${token}` }
@@ -141,10 +151,10 @@ function CreatePost({ refresh, setRefresh }) {
                 </div>
                 {url.length === 0 ? "" : <small >Image Uploaded Succesfuuly</small>}
                 <br />
-                <button disabled={url.length === 0} className="btn btn-primary bg-light text-success border-success my-2" type="submit" onClick={post}>Post</button>
+                <button  className="btn btn-primary bg-light text-success border-success my-2" type="submit" onClick={post}>Post</button>
             </form>
 
-            <ToastContainer />
+            {errorDisplay ? <ToastContainer /> : ""}
 
         </div>
     )
