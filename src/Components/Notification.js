@@ -45,7 +45,7 @@ function Notification() {
             <div className="row">
                 <div className="col-lg-3 left">
                     <div className="box shadow-sm mb-3 rounded bg-white ads-box text-center">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" className="img-fluid" alt="Responsive image" />
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" className="img-fluid" alt="Responsive" />
                         <div className="p-3 border-bottom">
                             <h6 className="font-weight-bold text-dark">Notifications</h6>
                             <p className="mb-0 text-muted">You’re all caught up! Check back later for new notifications</p>
@@ -56,7 +56,7 @@ function Notification() {
                     </div>
                     <div className="box mb-3 shadow-sm rounded bg-white profile-box text-center">
                         <div className="p-5">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" className="img-fluid" alt="Responsive image" />
+                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" className="img-fluid" alt="Responsive" />
                         </div>
                         <div className="p-3 border-top border-bottom">
                             <h5 className="font-weight-bold text-dark mb-1 mt-0">Envato</h5>

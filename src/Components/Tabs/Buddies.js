@@ -21,7 +21,7 @@ function Buddies() {
                 .catch(error => console.error(error));
         }
         fetchData();
-    }, [])
+    }, [token])
     return (
         <div>
             <input type="radio" name="css-tabs" id="tab-2" className="tab-switch" />

@@ -7,7 +7,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import Buddies from './Tabs/Buddies';
 import EditProfile from './EditProfile';
 import Feed from './Tabs/Feed';
-import React, { useState, useEffect, useRef   } from 'react';
+import React, { useState, useEffect } from 'react';
 import Travel from './Tabs/Travel';
 import { ToastContainer, toast } from 'react-toastify';
 

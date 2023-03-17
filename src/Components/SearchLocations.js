@@ -4,21 +4,21 @@ import { FaLocationArrow,FaSearchLocation } from "react-icons/fa";
 
 import PlacesAutocomplete, {
   geocodeByAddress,
-  geocodeByPlaceId,
-  getLatLng,
+  // geocodeByPlaceId,
+  // getLatLng,
 } from 'react-places-autocomplete';
 
 
 function SearchLocations(props) {
   const [address, setAdress] = useState("");
-  const { coordinates, setCoordinates } = useState({
-    lat: null,
-    lng: null
-  })
+  // const { coordinates, setCoordinates } = useState({
+  //   lat: null,
+  //   lng: null
+  // })
 
   const handleSelect = async value1 => {
     const results = await geocodeByAddress(value1);
-    const ll = await getLatLng(results[0]);
+    // const ll = await getLatLng(results[0]);
     setAdress(value1);
     props.onData(results[0].place_id); 
   }
