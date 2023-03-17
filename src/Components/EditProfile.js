@@ -30,7 +30,7 @@ function EditProfile() {
         if (!id) {
             // navigate('/')
         } else {
-            axios.get(`http://localhost:5000/preferences/${id}`,)
+            axios.get(`https://travelcompanion-q32wjds34a-as.a.run.app/preferences/${id}`,)
                 .then(response => {
                     setdata({
                         name: response.data.name,

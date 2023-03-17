@@ -11,7 +11,7 @@ function Feed({ refresh }) {
         async function fetchData() {
             Axios({
                 method: "GET",
-                url: "http://localhost:5000/feed",
+                url: "https://travelcompanion-q32wjds34a-as.a.run.app/feed",
                 headers: { Authorization: `Bearer ${token}` }
             }).then((res) => {
                 return res.data;
@@ -29,7 +29,7 @@ function Feed({ refresh }) {
     //             postID: postID,
     //             userID: userID,
     //         },
-    //         url: "http://localhost:5000/like",
+    //         url: "https://travelcompanion-q32wjds34a-as.a.run.app/like",
     //         headers: { Authorization: `Bearer ${token}` }
     //     }).then((res) => {
     //         console.log(res)
