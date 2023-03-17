@@ -3,7 +3,6 @@ import axios from 'axios';
 import store from './store/reducer'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
-import { FaLocationArrow,FaSearchLocation } from "react-icons/fa";
 // import PlacesAutocomplete, {
 //   geocodeByAddress,
 //   geocodeByPlaceId,
@@ -28,10 +27,10 @@ export const Preferences = () => {
     }
   )
   // const [address, setAdress] = useState("")
-  const { coordinates, setCoordinates } = useState({
-    lat: null,
-    lng: null
-  })
+  // const { coordinates, setCoordinates } = useState({
+  //   lat: null,
+  //   lng: null
+  // })
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -45,12 +44,12 @@ export const Preferences = () => {
     }));
   }
 
-  const handleSelect = async value1 => {
+  // const handleSelect = async value1 => {
     // const results = await geocodeByAddress(value1);
     // const ll = await getLatLng(results[0]);
     // // setLocation(value1);
     // setCoordinates(ll);
-  }
+  // }
 
   const handleSubmit = (event) => {
     event.preventDefault();

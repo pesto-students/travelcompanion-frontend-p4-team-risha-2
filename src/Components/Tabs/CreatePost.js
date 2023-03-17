@@ -17,7 +17,7 @@ function CreatePost({ refresh, setRefresh }) {
     const [url, setUrl] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
-    const author = useSelector(state => state);
+    // const author = useSelector(state => state);
 
 
     /**
