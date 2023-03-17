@@ -10,14 +10,14 @@ const LikeButton = ({ postId }) => {
   useEffect(() => {
     const fetchLikes = async () => {
       const res = await axios.get(`http://localhost:5000/${postId}/likes`,
-      {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        });
       setLikes(res.data.likes);
       setLiked(res.data.liked);
     };
     fetchLikes();
-  }, [postId,token]);
+  }, [postId, token]);
 
   const handleLike = async () => {
     try {
@@ -28,10 +28,10 @@ const LikeButton = ({ postId }) => {
         },
         url: `http://localhost:5000/${postId}/likes`,
         headers: { Authorization: `Bearer ${token}` }
-    }).then((res) => {
-      setLikes(res.data.likes);
-      setLiked(true);
-    });
+      }).then((res) => {
+        setLikes(res.data.likes);
+        setLiked(true);
+      });
     } catch (err) {
       console.error(err);
     }
@@ -51,10 +51,17 @@ const LikeButton = ({ postId }) => {
         },
         url: `http://localhost:5000/${postId}/likes`,
         headers: { Authorization: `Bearer ${token}` }
-    }).then((res) => {
-      setLikes(res.data.likes);
-      setLiked(false);
-    });
+      }).then((res) => {
+        let len = res.data.length - 1;
+        console.log(len, "len")
+        if (len >= 0) {
+          setLikes(res.data[len].likeNumber);
+        } else {
+          setLikes(0);
+        }
+
+        setLiked(false);
+      });
     } catch (err) {
       console.error(err);
     }
