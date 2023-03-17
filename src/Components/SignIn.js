@@ -75,7 +75,7 @@ export const SignIn = () => {
                     gender: gender,
                     intrest: intrest,
                 },
-                url: "http://localhost:5000/register",
+                url: "https://travelcompanion-q32wjds34a-as.a.run.app/register",
             }).then((res) => {
                 setIsLoading(false);
                 errorDisplay("User Created Succesfuuly, Please login");
@@ -95,7 +95,7 @@ export const SignIn = () => {
         isLoading ?
             <Loader /> :
             <div className="container h-100 bg-img-sign-up">
-                <div className="row h-100">
+                <div className="row">
 
                     <div className='col-lg-4 m-auto text-light py-5'>
                         <h1>Already have a account?</h1>

@@ -12,7 +12,7 @@ function Travel() {
         async function fetchData() {
             Axios({
                 method: "GET",
-                url: `http://localhost:5000/mapPlacesbySearch/${location}`,
+                url: `https://travelcompanion-q32wjds34a-as.a.run.app/mapPlacesbySearch/${location}`,
                 headers: { Authorization: `Bearer ${token}` }
             }).then((res) => {
                 return res.data;

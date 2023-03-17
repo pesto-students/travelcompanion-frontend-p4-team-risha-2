@@ -9,7 +9,7 @@ const LikeButton = ({ postId }) => {
 
   useEffect(() => {
     const fetchLikes = async () => {
-      const res = await axios.get(`http://localhost:5000/${postId}/likes`,
+      const res = await axios.get(`https://travelcompanion-q32wjds34a-as.a.run.app/${postId}/likes`,
         {
           headers: { Authorization: `Bearer ${token}` }
         });
@@ -26,7 +26,7 @@ const LikeButton = ({ postId }) => {
         data: {
           postId: postId
         },
-        url: `http://localhost:5000/${postId}/likes`,
+        url: `https://travelcompanion-q32wjds34a-as.a.run.app/${postId}/likes`,
         headers: { Authorization: `Bearer ${token}` }
       }).then((res) => {
         setLikes(res.data.likes);
@@ -49,7 +49,7 @@ const LikeButton = ({ postId }) => {
         data: {
           postId: postId
         },
-        url: `http://localhost:5000/${postId}/likes`,
+        url: `https://travelcompanion-q32wjds34a-as.a.run.app/${postId}/likes`,
         headers: { Authorization: `Bearer ${token}` }
       }).then((res) => {
         let len = res.data.length - 1;

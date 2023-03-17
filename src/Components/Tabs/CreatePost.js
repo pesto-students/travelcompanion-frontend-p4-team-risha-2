@@ -104,7 +104,7 @@ function CreatePost({ refresh, setRefresh }) {
                     likes: [],
                     name: "assam"
                 },
-                url: "http://localhost:5000/feed",
+                url: "https://travelcompanion-q32wjds34a-as.a.run.app/feed",
                 headers: { Authorization: `Bearer ${token}` }
             }).then((res) => {
                 setRefresh(!refresh);

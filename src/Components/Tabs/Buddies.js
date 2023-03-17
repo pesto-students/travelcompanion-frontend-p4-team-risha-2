@@ -10,7 +10,7 @@ function Buddies() {
         async function fetchData() {
             Axios({
                 method: "GET",
-                url: "http://localhost:5000/preferences",
+                url: "https://travelcompanion-q32wjds34a-as.a.run.app/preferences",
                 headers: { Authorization: `Bearer ${token}` }
             }).then((res) => {
                 return res.data;
