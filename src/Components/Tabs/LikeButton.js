@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import  {FaHandHoldingHeart} from 'react-icons/fa';
 
 const LikeButton = ({ postId }) => {
   const [likes, setLikes] = useState(0);
@@ -68,11 +69,11 @@ const LikeButton = ({ postId }) => {
   };
 
   return (
-    <div>
-      <button onClick={liked ? handleUnlike : handleLike}>
-        {liked ? 'Unlike' : 'Like'}
-      </button>
-      {likes} likes
+    <div className='d-flex align-items-center'>
+      <button onClick={liked ? handleUnlike : handleLike} className="btn btn-secondary mx-3 my-3">
+        {liked ? 'Unlike' : 'Like'}<FaHandHoldingHeart className="mx-1"/>
+      </button> 
+      <p>{likes} likes</p>
     </div>
   );
 };

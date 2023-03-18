@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -16,6 +16,8 @@ function EditProfile() {
         progress: undefined,
         theme: "colored",
     });
+    const dispatch = useDispatch();
+
     const [data, setdata] = useState({
         name: null,
         email: "",
@@ -38,13 +40,20 @@ function EditProfile() {
                         phone: response.data.phone,
                         password: response.data.password
                     });
+                    dispatch({
+                        type: 'SET_TOKEN',
+                        payload: {
+                            name: response.data.name,
+                            email: response.data.email,
+                        }
+                    })
                 })
                 .catch(Err => {
                     console.log(Err)
                 })
         }
 
-    }, [id]);
+    }, [id,dispatch]);
 
     function handleChange(evt) {
         const value = evt.target.value;

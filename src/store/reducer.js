@@ -16,7 +16,8 @@ const initialState = {
     }],
         token: null,
         _id:"",
-        name:""
+        name:"",
+        email:""
 }
 
 const reducer = (state = initialState, action) => {
@@ -31,7 +32,8 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 token: action.payload.token,
                 _id:action.payload._id,
-                name:action.payload.name
+                name:action.payload.name,
+                email: action.payload.email
             };
         case 'REMOVE_TOKEN':
             return {
