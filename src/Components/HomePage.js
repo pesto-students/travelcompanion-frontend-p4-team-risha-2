@@ -10,6 +10,7 @@ import Feed from './Tabs/Feed';
 import React, { useState, useEffect } from 'react';
 import Travel from './Tabs/Travel';
 import { ToastContainer, toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 
 function HomePage() {
   const [refresh, setRefresh] = useState(false);
@@ -25,6 +26,11 @@ function HomePage() {
     progress: undefined,
     theme: "colored",
 });
+const email = useSelector(state => state.email);
+
+const name = useSelector(state => state.name);
+
+console.log("id",name,email)
 
 useEffect(() => {
   // if (!isInitialMount.current) {
@@ -56,8 +62,8 @@ useEffect(() => {
                         <div className="logo"></div>
                         <div className='d-flex justify-content-end'>
                           <h1 className="title">
-                            Uma Varagam
-                            <div>varagam@gmail.com</div>
+                          {name}
+                            <div>{email}</div>
                           </h1>
                           <button className='btn btn-primary edit-btn'>My Feed</button>
                           <div>
